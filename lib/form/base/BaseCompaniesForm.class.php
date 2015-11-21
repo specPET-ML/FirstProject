@@ -5,25 +5,39 @@
  *
  * @method Companies getObject() Returns the current form's model object
  *
- * @package    employee
+ * @package    MokYokIT
  * @subpackage form
- * @author     Your name here
+ * @author     Marcin Ławniczak
  */
 abstract class BaseCompaniesForm extends BaseFormPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
-      'employee_id'      => new sfWidgetFormInputHidden(),
-      'employee_name'    => new sfWidgetFormInputText(),
-      'employee_surname' => new sfWidgetFormInputText(),
+      'company_id'           => new sfWidgetFormInputHidden(),
+      'company_name'         => new sfWidgetFormInputText(),
+      'company_adress'       => new sfWidgetFormInputText(),
+      'company_zip_code'     => new sfWidgetFormInputText(),
+      'company_city'         => new sfWidgetFormInputText(),
+      'company_NIP'          => new sfWidgetFormInputText(),
+      'company_bank_name'    => new sfWidgetFormInputText(),
+      'company_bank_account' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
-      'employee_id'      => new sfValidatorChoice(array('choices' => array($this->getObject()->getEmployeeId()), 'empty_value' => $this->getObject()->getEmployeeId(), 'required' => false)),
-      'employee_name'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
-      'employee_surname' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'company_id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->getCompanyId()), 'empty_value' => $this->getObject()->getCompanyId(), 'required' => false)),
+      'company_name'         => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'company_adress'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'company_zip_code'     => new sfValidatorString(array('max_length' => 6, 'required' => false)),
+      'company_city'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'company_NIP'          => new sfValidatorString(array('max_length' => 15, 'required' => false)),
+      'company_bank_name'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'company_bank_account' => new sfValidatorString(array('max_length' => 26, 'required' => false)),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorPropelUnique(array('model' => 'Companies', 'column' => array('company_name')))
+    );
 
     $this->widgetSchema->setNameFormat('companies[%s]');
 

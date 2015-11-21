@@ -3,22 +3,32 @@
 /**
  * Companies filter form base class.
  *
- * @package    employee
+ * @package    MokYokIT
  * @subpackage filter
- * @author     Your name here
+ * @author     Marcin Ławniczak
  */
 abstract class BaseCompaniesFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
-      'employee_name'    => new sfWidgetFormFilterInput(),
-      'employee_surname' => new sfWidgetFormFilterInput(),
+      'company_name'         => new sfWidgetFormFilterInput(),
+      'company_adress'       => new sfWidgetFormFilterInput(),
+      'company_zip_code'     => new sfWidgetFormFilterInput(),
+      'company_city'         => new sfWidgetFormFilterInput(),
+      'company_NIP'          => new sfWidgetFormFilterInput(),
+      'company_bank_name'    => new sfWidgetFormFilterInput(),
+      'company_bank_account' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'employee_name'    => new sfValidatorPass(array('required' => false)),
-      'employee_surname' => new sfValidatorPass(array('required' => false)),
+      'company_name'         => new sfValidatorPass(array('required' => false)),
+      'company_adress'       => new sfValidatorPass(array('required' => false)),
+      'company_zip_code'     => new sfValidatorPass(array('required' => false)),
+      'company_city'         => new sfValidatorPass(array('required' => false)),
+      'company_NIP'          => new sfValidatorPass(array('required' => false)),
+      'company_bank_name'    => new sfValidatorPass(array('required' => false)),
+      'company_bank_account' => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('companies_filters[%s]');
@@ -36,9 +46,14 @@ abstract class BaseCompaniesFormFilter extends BaseFormFilterPropel
   public function getFields()
   {
     return array(
-      'employee_id'      => 'Number',
-      'employee_name'    => 'Text',
-      'employee_surname' => 'Text',
+      'company_id'           => 'Number',
+      'company_name'         => 'Text',
+      'company_adress'       => 'Text',
+      'company_zip_code'     => 'Text',
+      'company_city'         => 'Text',
+      'company_NIP'          => 'Text',
+      'company_bank_name'    => 'Text',
+      'company_bank_account' => 'Text',
     );
   }
 }
