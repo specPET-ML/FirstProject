@@ -1,17 +1,34 @@
-# # Populate this file with data to be loaded by your ORM's *:data-load task.
-# # You can create multiple files in this directory (i.e. 010_users.yml,
-# # 020_articles.yml, etc) which will be loaded in alphabetical order.
-# # 
-# # See documentation for your ORM's *:data-load task for more information.
-# 
-# User:
-#   fabien:
-#     username: fabien
-#     password: changeme
-#     name:     Fabien Potencier
-#     email:    fabien.potencier@symfony-project.com
-#   kris:
-#     username: Kris.Wallsmith
-#     password: changeme
-#     name:     Kris Wallsmith
-#     email:    kris.wallsmith@symfony-project.com
+companies:
+    specPET:
+        company_name:         SpecPET Marcin Ławniczak
+        company_adress:       ul. Szwolezerów 3b/6
+        company_zip_code:     66-400
+        company_city:         Gorzów Wielkopolski
+        company_NIP:          599-295-96-64
+        company_bank_name:    mBank SA
+        company_bank_account: 08 1140 2004 0000 3302 7555 2725
+
+customers:
+    MokYokIT:
+        customer_name:         Mok Yok IT sp. z o.o.
+        customer_adress:       ul. Św. Mikołaja 8-11
+        customer_zip_code:     50-125
+        customer_city:         Wrocław
+        customer_NIP:          895-188-91-12
+    CCIG:
+        customer_name:         Call Center Inter Galactica
+        customer_adress:       ul. Rzeźnicza 32/33
+        customer_zip_code:     50-130
+        customer_city:         Wrocław
+        customer_NIP:          898-214-51-11
+invoices:
+    FV:
+        customer_id:           MokYokIT
+        issued_date:           2015-10-01
+        service_name:          Świaczenie usług informatycznych
+        sold_date:             2015-09-01
+        company_id:            specPET
+        price_netto:           5200.00
+        price_brutto:          6450.00
+        value_tax:             23.00
+        tax:                   11250.00
