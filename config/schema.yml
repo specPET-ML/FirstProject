@@ -1,0 +1,32 @@
+propel:
+  companies:
+    company_id:           { type: integer, required: true, primaryKey: true, autoIncrement: true }
+    company_name:         { type: varchar(100) }
+    company_adress:       { type: varchar(255) }
+    company_zip_code:     { type: varchar(6) }
+    company_city:         { type: varchar(255) }
+    company_NIP:          { type: varchar(15) }
+    company_bank_name:    { type: varchar(100) }
+    company_bank_account: { type: varchar(26) }
+    _uniques:
+      u_companyName:      [ company_name ]
+  customers:
+    customer_id:          { type: integer, required: true, primaryKey: true, autoIncrement: true }
+    customer_name:        { type: varchar(100) }
+    customer_adress:      { type: varchar(255) }
+    customer_zip_code:    { type: varchar(6) }
+    customer_city:        { type: varchar(255) }
+    customer_NIP:         { type: varchar(15) }
+    _uniques:
+      u_customerName:     [ customer_name ]
+  invoices:
+    invoice_id:           { type: integer, required: true, primaryKey: true, autoIncrement: true }
+    company_id:           { type: integer, required: true, foreignTable: companies, foreignReference: company_id }
+    issued_date:          { type: date, notnull: true }
+    service_name:         { type: varchar(255) }
+    sold_date:            { type: date, notnull: true }
+    customer_id:          { type: integer, required: true, foreignTable: customers, foreignReference: customer_id }
+    price_netto:          { type: decimal, size: 11, scale: 2 }
+    price_brutto:         { type: decimal, size: 11, scale: 2 }
+    value_tax:            { type: decimal, size: 11, scale: 2 }
+    tax:                  { type: decimal, size: 11, scale: 2 }
