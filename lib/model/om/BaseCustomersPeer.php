@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base static class for performing query and update operations on the 'companies' table.
+ * Base static class for performing query and update operations on the 'customers' table.
  *
  * 
  *
@@ -11,58 +11,52 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseCompaniesPeer {
+abstract class BaseCustomersPeer {
 
 	/** the default database name for this class */
 	const DATABASE_NAME = 'propel';
 
 	/** the table name for this class */
-	const TABLE_NAME = 'companies';
+	const TABLE_NAME = 'customers';
 
 	/** the related Propel class for this table */
-	const OM_CLASS = 'Companies';
+	const OM_CLASS = 'Customers';
 
 	/** A class that can be returned by this peer. */
-	const CLASS_DEFAULT = 'lib.model.Companies';
+	const CLASS_DEFAULT = 'lib.model.Customers';
 
 	/** the related TableMap class for this table */
-	const TM_CLASS = 'CompaniesTableMap';
+	const TM_CLASS = 'CustomersTableMap';
 	
 	/** The total number of columns. */
-	const NUM_COLUMNS = 8;
+	const NUM_COLUMNS = 6;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
-	/** the column name for the COMPANY_ID field */
-	const COMPANY_ID = 'companies.COMPANY_ID';
+	/** the column name for the CUSTOMER_ID field */
+	const CUSTOMER_ID = 'customers.CUSTOMER_ID';
 
-	/** the column name for the COMPANY_NAME field */
-	const COMPANY_NAME = 'companies.COMPANY_NAME';
+	/** the column name for the CUSTOMER_NAME field */
+	const CUSTOMER_NAME = 'customers.CUSTOMER_NAME';
 
-	/** the column name for the COMPANY_ADRESS field */
-	const COMPANY_ADRESS = 'companies.COMPANY_ADRESS';
+	/** the column name for the CUSTOMER_ADRESS field */
+	const CUSTOMER_ADRESS = 'customers.CUSTOMER_ADRESS';
 
-	/** the column name for the COMPANY_ZIP_CODE field */
-	const COMPANY_ZIP_CODE = 'companies.COMPANY_ZIP_CODE';
+	/** the column name for the CUSTOMER_ZIP_CODE field */
+	const CUSTOMER_ZIP_CODE = 'customers.CUSTOMER_ZIP_CODE';
 
-	/** the column name for the COMPANY_CITY field */
-	const COMPANY_CITY = 'companies.COMPANY_CITY';
+	/** the column name for the CUSTOMER_CITY field */
+	const CUSTOMER_CITY = 'customers.CUSTOMER_CITY';
 
-	/** the column name for the COMPANY_NIP field */
-	const COMPANY_NIP = 'companies.COMPANY_NIP';
-
-	/** the column name for the COMPANY_BANK_NAME field */
-	const COMPANY_BANK_NAME = 'companies.COMPANY_BANK_NAME';
-
-	/** the column name for the COMPANY_BANK_ACCOUNT field */
-	const COMPANY_BANK_ACCOUNT = 'companies.COMPANY_BANK_ACCOUNT';
+	/** the column name for the CUSTOMER_NIP field */
+	const CUSTOMER_NIP = 'customers.CUSTOMER_NIP';
 
 	/**
-	 * An identiy map to hold any loaded instances of Companies objects.
+	 * An identiy map to hold any loaded instances of Customers objects.
 	 * This must be public so that other peer classes can access this when hydrating from JOIN
 	 * queries.
-	 * @var        array Companies[]
+	 * @var        array Customers[]
 	 */
 	public static $instances = array();
 
@@ -81,11 +75,11 @@ abstract class BaseCompaniesPeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('CompanyId', 'CompanyName', 'CompanyAdress', 'CompanyZipCode', 'CompanyCity', 'CompanyNip', 'CompanyBankName', 'CompanyBankAccount', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('companyId', 'companyName', 'companyAdress', 'companyZipCode', 'companyCity', 'companyNip', 'companyBankName', 'companyBankAccount', ),
-		BasePeer::TYPE_COLNAME => array (self::COMPANY_ID, self::COMPANY_NAME, self::COMPANY_ADRESS, self::COMPANY_ZIP_CODE, self::COMPANY_CITY, self::COMPANY_NIP, self::COMPANY_BANK_NAME, self::COMPANY_BANK_ACCOUNT, ),
-		BasePeer::TYPE_FIELDNAME => array ('company_id', 'company_name', 'company_adress', 'company_zip_code', 'company_city', 'company_NIP', 'company_bank_name', 'company_bank_account', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('CustomerId', 'CustomerName', 'CustomerAdress', 'CustomerZipCode', 'CustomerCity', 'CustomerNip', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('customerId', 'customerName', 'customerAdress', 'customerZipCode', 'customerCity', 'customerNip', ),
+		BasePeer::TYPE_COLNAME => array (self::CUSTOMER_ID, self::CUSTOMER_NAME, self::CUSTOMER_ADRESS, self::CUSTOMER_ZIP_CODE, self::CUSTOMER_CITY, self::CUSTOMER_NIP, ),
+		BasePeer::TYPE_FIELDNAME => array ('customer_id', 'customer_name', 'customer_adress', 'customer_zip_code', 'customer_city', 'customer_NIP', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
 	);
 
 	/**
@@ -95,11 +89,11 @@ abstract class BaseCompaniesPeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('CompanyId' => 0, 'CompanyName' => 1, 'CompanyAdress' => 2, 'CompanyZipCode' => 3, 'CompanyCity' => 4, 'CompanyNip' => 5, 'CompanyBankName' => 6, 'CompanyBankAccount' => 7, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('companyId' => 0, 'companyName' => 1, 'companyAdress' => 2, 'companyZipCode' => 3, 'companyCity' => 4, 'companyNip' => 5, 'companyBankName' => 6, 'companyBankAccount' => 7, ),
-		BasePeer::TYPE_COLNAME => array (self::COMPANY_ID => 0, self::COMPANY_NAME => 1, self::COMPANY_ADRESS => 2, self::COMPANY_ZIP_CODE => 3, self::COMPANY_CITY => 4, self::COMPANY_NIP => 5, self::COMPANY_BANK_NAME => 6, self::COMPANY_BANK_ACCOUNT => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('company_id' => 0, 'company_name' => 1, 'company_adress' => 2, 'company_zip_code' => 3, 'company_city' => 4, 'company_NIP' => 5, 'company_bank_name' => 6, 'company_bank_account' => 7, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('CustomerId' => 0, 'CustomerName' => 1, 'CustomerAdress' => 2, 'CustomerZipCode' => 3, 'CustomerCity' => 4, 'CustomerNip' => 5, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('customerId' => 0, 'customerName' => 1, 'customerAdress' => 2, 'customerZipCode' => 3, 'customerCity' => 4, 'customerNip' => 5, ),
+		BasePeer::TYPE_COLNAME => array (self::CUSTOMER_ID => 0, self::CUSTOMER_NAME => 1, self::CUSTOMER_ADRESS => 2, self::CUSTOMER_ZIP_CODE => 3, self::CUSTOMER_CITY => 4, self::CUSTOMER_NIP => 5, ),
+		BasePeer::TYPE_FIELDNAME => array ('customer_id' => 0, 'customer_name' => 1, 'customer_adress' => 2, 'customer_zip_code' => 3, 'customer_city' => 4, 'customer_NIP' => 5, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
 	);
 
 	/**
@@ -148,12 +142,12 @@ abstract class BaseCompaniesPeer {
 	 *		$c->addJoin(TablePeer::alias("alias1", TablePeer::PRIMARY_KEY_COLUMN), TablePeer::PRIMARY_KEY_COLUMN);
 	 * </code>
 	 * @param      string $alias The alias for the current table.
-	 * @param      string $column The column name for current table. (i.e. CompaniesPeer::COLUMN_NAME).
+	 * @param      string $column The column name for current table. (i.e. CustomersPeer::COLUMN_NAME).
 	 * @return     string
 	 */
 	public static function alias($alias, $column)
 	{
-		return str_replace(CompaniesPeer::TABLE_NAME.'.', $alias.'.', $column);
+		return str_replace(CustomersPeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
 	/**
@@ -169,14 +163,12 @@ abstract class BaseCompaniesPeer {
 	 */
 	public static function addSelectColumns(Criteria $criteria)
 	{
-		$criteria->addSelectColumn(CompaniesPeer::COMPANY_ID);
-		$criteria->addSelectColumn(CompaniesPeer::COMPANY_NAME);
-		$criteria->addSelectColumn(CompaniesPeer::COMPANY_ADRESS);
-		$criteria->addSelectColumn(CompaniesPeer::COMPANY_ZIP_CODE);
-		$criteria->addSelectColumn(CompaniesPeer::COMPANY_CITY);
-		$criteria->addSelectColumn(CompaniesPeer::COMPANY_NIP);
-		$criteria->addSelectColumn(CompaniesPeer::COMPANY_BANK_NAME);
-		$criteria->addSelectColumn(CompaniesPeer::COMPANY_BANK_ACCOUNT);
+		$criteria->addSelectColumn(CustomersPeer::CUSTOMER_ID);
+		$criteria->addSelectColumn(CustomersPeer::CUSTOMER_NAME);
+		$criteria->addSelectColumn(CustomersPeer::CUSTOMER_ADRESS);
+		$criteria->addSelectColumn(CustomersPeer::CUSTOMER_ZIP_CODE);
+		$criteria->addSelectColumn(CustomersPeer::CUSTOMER_CITY);
+		$criteria->addSelectColumn(CustomersPeer::CUSTOMER_NIP);
 	}
 
 	/**
@@ -195,26 +187,26 @@ abstract class BaseCompaniesPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(CompaniesPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(CustomersPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			CompaniesPeer::addSelectColumns($criteria);
+			CustomersPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
 		$criteria->setDbName(self::DATABASE_NAME); // Set the correct dbName
 
 		if ($con === null) {
-			$con = Propel::getConnection(CompaniesPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(CustomersPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseCompaniesPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseCustomersPeer', $criteria, $con);
 		}
 
 		// BasePeer returns a PDOStatement
@@ -233,7 +225,7 @@ abstract class BaseCompaniesPeer {
 	 *
 	 * @param      Criteria $criteria object used to create the SELECT statement.
 	 * @param      PropelPDO $con
-	 * @return     Companies
+	 * @return     Customers
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -241,7 +233,7 @@ abstract class BaseCompaniesPeer {
 	{
 		$critcopy = clone $criteria;
 		$critcopy->setLimit(1);
-		$objects = CompaniesPeer::doSelect($critcopy, $con);
+		$objects = CustomersPeer::doSelect($critcopy, $con);
 		if ($objects) {
 			return $objects[0];
 		}
@@ -258,7 +250,7 @@ abstract class BaseCompaniesPeer {
 	 */
 	public static function doSelect(Criteria $criteria, PropelPDO $con = null)
 	{
-		return CompaniesPeer::populateObjects(CompaniesPeer::doSelectStmt($criteria, $con));
+		return CustomersPeer::populateObjects(CustomersPeer::doSelectStmt($criteria, $con));
 	}
 	/**
 	 * Prepares the Criteria object and uses the parent doSelect() method to execute a PDOStatement.
@@ -276,12 +268,12 @@ abstract class BaseCompaniesPeer {
 	public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(CompaniesPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(CustomersPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		if (!$criteria->hasSelectClause()) {
 			$criteria = clone $criteria;
-			CompaniesPeer::addSelectColumns($criteria);
+			CustomersPeer::addSelectColumns($criteria);
 		}
 
 		// Set the correct dbName
@@ -289,7 +281,7 @@ abstract class BaseCompaniesPeer {
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseCompaniesPeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseCustomersPeer', $criteria, $con);
 		}
 
 
@@ -305,14 +297,14 @@ abstract class BaseCompaniesPeer {
 	 * to the cache in order to ensure that the same objects are always returned by doSelect*()
 	 * and retrieveByPK*() calls.
 	 *
-	 * @param      Companies $value A Companies object.
+	 * @param      Customers $value A Customers object.
 	 * @param      string $key (optional) key to use for instance map (for performance boost if key was already calculated externally).
 	 */
-	public static function addInstanceToPool(Companies $obj, $key = null)
+	public static function addInstanceToPool(Customers $obj, $key = null)
 	{
 		if (Propel::isInstancePoolingEnabled()) {
 			if ($key === null) {
-				$key = (string) $obj->getCompanyId();
+				$key = (string) $obj->getCustomerId();
 			} // if key === null
 			self::$instances[$key] = $obj;
 		}
@@ -326,18 +318,18 @@ abstract class BaseCompaniesPeer {
 	 * methods in your stub classes -- you may need to explicitly remove objects
 	 * from the cache in order to prevent returning objects that no longer exist.
 	 *
-	 * @param      mixed $value A Companies object or a primary key value.
+	 * @param      mixed $value A Customers object or a primary key value.
 	 */
 	public static function removeInstanceFromPool($value)
 	{
 		if (Propel::isInstancePoolingEnabled() && $value !== null) {
-			if (is_object($value) && $value instanceof Companies) {
-				$key = (string) $value->getCompanyId();
+			if (is_object($value) && $value instanceof Customers) {
+				$key = (string) $value->getCustomerId();
 			} elseif (is_scalar($value)) {
 				// assume we've been passed a primary key
 				$key = (string) $value;
 			} else {
-				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or Companies object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
+				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or Customers object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
 				throw $e;
 			}
 
@@ -352,7 +344,7 @@ abstract class BaseCompaniesPeer {
 	 * a multi-column primary key, a serialize()d version of the primary key will be returned.
 	 *
 	 * @param      string $key The key (@see getPrimaryKeyHash()) for this instance.
-	 * @return     Companies Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
+	 * @return     Customers Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
 	 * @see        getPrimaryKeyHash()
 	 */
 	public static function getInstanceFromPool($key)
@@ -376,7 +368,7 @@ abstract class BaseCompaniesPeer {
 	}
 	
 	/**
-	 * Method to invalidate the instance pool of all tables related to companies
+	 * Method to invalidate the instance pool of all tables related to customers
 	 * by a foreign key with ON DELETE CASCADE
 	 */
 	public static function clearRelatedInstancePool()
@@ -414,11 +406,11 @@ abstract class BaseCompaniesPeer {
 		$results = array();
 	
 		// set the class once to avoid overhead in the loop
-		$cls = CompaniesPeer::getOMClass(false);
+		$cls = CustomersPeer::getOMClass(false);
 		// populate the object(s)
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key = CompaniesPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj = CompaniesPeer::getInstanceFromPool($key))) {
+			$key = CustomersPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj = CustomersPeer::getInstanceFromPool($key))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj->hydrate($row, 0, true); // rehydrate
@@ -427,7 +419,7 @@ abstract class BaseCompaniesPeer {
 				$obj = new $cls();
 				$obj->hydrate($row);
 				$results[] = $obj;
-				CompaniesPeer::addInstanceToPool($obj, $key);
+				CustomersPeer::addInstanceToPool($obj, $key);
 			} // if key exists
 		}
 		$stmt->closeCursor();
@@ -450,10 +442,10 @@ abstract class BaseCompaniesPeer {
 	 */
 	public static function buildTableMap()
 	{
-	  $dbMap = Propel::getDatabaseMap(BaseCompaniesPeer::DATABASE_NAME);
-	  if (!$dbMap->hasTable(BaseCompaniesPeer::TABLE_NAME))
+	  $dbMap = Propel::getDatabaseMap(BaseCustomersPeer::DATABASE_NAME);
+	  if (!$dbMap->hasTable(BaseCustomersPeer::TABLE_NAME))
 	  {
-	    $dbMap->addTableObject(new CompaniesTableMap());
+	    $dbMap->addTableObject(new CustomersTableMap());
 	  }
 	}
 
@@ -470,13 +462,13 @@ abstract class BaseCompaniesPeer {
 	 */
 	public static function getOMClass($withPrefix = true)
 	{
-		return $withPrefix ? CompaniesPeer::CLASS_DEFAULT : CompaniesPeer::OM_CLASS;
+		return $withPrefix ? CustomersPeer::CLASS_DEFAULT : CustomersPeer::OM_CLASS;
 	}
 
 	/**
-	 * Method perform an INSERT on the database, given a Companies or Criteria object.
+	 * Method perform an INSERT on the database, given a Customers or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or Companies object containing data that is used to create the INSERT statement.
+	 * @param      mixed $values Criteria or Customers object containing data that is used to create the INSERT statement.
 	 * @param      PropelPDO $con the PropelPDO connection to use
 	 * @return     mixed The new primary key.
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -485,26 +477,26 @@ abstract class BaseCompaniesPeer {
 	public static function doInsert($values, PropelPDO $con = null)
 	{
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseCompaniesPeer:doInsert:pre') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseCustomersPeer:doInsert:pre') as $sf_hook)
     {
-      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseCompaniesPeer', $values, $con))
+      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseCustomersPeer', $values, $con))
       {
         return $sf_hook_retval;
       }
     }
 
 		if ($con === null) {
-			$con = Propel::getConnection(CompaniesPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(CustomersPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 		} else {
-			$criteria = $values->buildCriteria(); // build Criteria from Companies object
+			$criteria = $values->buildCriteria(); // build Criteria from Customers object
 		}
 
-		if ($criteria->containsKey(CompaniesPeer::COMPANY_ID) && $criteria->keyContainsValue(CompaniesPeer::COMPANY_ID) ) {
-			throw new PropelException('Cannot insert a value for auto-increment primary key ('.CompaniesPeer::COMPANY_ID.')');
+		if ($criteria->containsKey(CustomersPeer::CUSTOMER_ID) && $criteria->keyContainsValue(CustomersPeer::CUSTOMER_ID) ) {
+			throw new PropelException('Cannot insert a value for auto-increment primary key ('.CustomersPeer::CUSTOMER_ID.')');
 		}
 
 
@@ -523,18 +515,18 @@ abstract class BaseCompaniesPeer {
 		}
 
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseCompaniesPeer:doInsert:post') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseCustomersPeer:doInsert:post') as $sf_hook)
     {
-      call_user_func($sf_hook, 'BaseCompaniesPeer', $values, $con, $pk);
+      call_user_func($sf_hook, 'BaseCustomersPeer', $values, $con, $pk);
     }
 
 		return $pk;
 	}
 
 	/**
-	 * Method perform an UPDATE on the database, given a Companies or Criteria object.
+	 * Method perform an UPDATE on the database, given a Customers or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or Companies object containing data that is used to create the UPDATE statement.
+	 * @param      mixed $values Criteria or Customers object containing data that is used to create the UPDATE statement.
 	 * @param      PropelPDO $con The connection to use (specify PropelPDO connection object to exert more control over transactions).
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -543,16 +535,16 @@ abstract class BaseCompaniesPeer {
 	public static function doUpdate($values, PropelPDO $con = null)
 	{
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseCompaniesPeer:doUpdate:pre') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseCustomersPeer:doUpdate:pre') as $sf_hook)
     {
-      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseCompaniesPeer', $values, $con))
+      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseCustomersPeer', $values, $con))
       {
         return $sf_hook_retval;
       }
     }
 
 		if ($con === null) {
-			$con = Propel::getConnection(CompaniesPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(CustomersPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		$selectCriteria = new Criteria(self::DATABASE_NAME);
@@ -560,10 +552,10 @@ abstract class BaseCompaniesPeer {
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 
-			$comparison = $criteria->getComparison(CompaniesPeer::COMPANY_ID);
-			$selectCriteria->add(CompaniesPeer::COMPANY_ID, $criteria->remove(CompaniesPeer::COMPANY_ID), $comparison);
+			$comparison = $criteria->getComparison(CustomersPeer::CUSTOMER_ID);
+			$selectCriteria->add(CustomersPeer::CUSTOMER_ID, $criteria->remove(CustomersPeer::CUSTOMER_ID), $comparison);
 
-		} else { // $values is Companies object
+		} else { // $values is Customers object
 			$criteria = $values->buildCriteria(); // gets full criteria
 			$selectCriteria = $values->buildPkeyCriteria(); // gets criteria w/ primary key(s)
 		}
@@ -574,35 +566,35 @@ abstract class BaseCompaniesPeer {
 		$ret = BasePeer::doUpdate($selectCriteria, $criteria, $con);
 
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseCompaniesPeer:doUpdate:post') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseCustomersPeer:doUpdate:post') as $sf_hook)
     {
-      call_user_func($sf_hook, 'BaseCompaniesPeer', $values, $con, $ret);
+      call_user_func($sf_hook, 'BaseCustomersPeer', $values, $con, $ret);
     }
 
     return $ret;
 	}
 
 	/**
-	 * Method to DELETE all rows from the companies table.
+	 * Method to DELETE all rows from the customers table.
 	 *
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 */
 	public static function doDeleteAll($con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(CompaniesPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(CustomersPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		$affectedRows = 0; // initialize var to track total num of affected rows
 		try {
 			// use transaction because $criteria could contain info
 			// for more than one table or we could emulating ON DELETE CASCADE, etc.
 			$con->beginTransaction();
-			$affectedRows += BasePeer::doDeleteAll(CompaniesPeer::TABLE_NAME, $con);
+			$affectedRows += BasePeer::doDeleteAll(CustomersPeer::TABLE_NAME, $con);
 			// Because this db requires some delete cascade/set null emulation, we have to
 			// clear the cached instance *after* the emulation has happened (since
 			// instances get re-added by the select statement contained therein).
-			CompaniesPeer::clearInstancePool();
-			CompaniesPeer::clearRelatedInstancePool();
+			CustomersPeer::clearInstancePool();
+			CustomersPeer::clearRelatedInstancePool();
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -612,9 +604,9 @@ abstract class BaseCompaniesPeer {
 	}
 
 	/**
-	 * Method perform a DELETE on the database, given a Companies or Criteria object OR a primary key value.
+	 * Method perform a DELETE on the database, given a Customers or Criteria object OR a primary key value.
 	 *
-	 * @param      mixed $values Criteria or Companies object or primary key or array of primary keys
+	 * @param      mixed $values Criteria or Customers object or primary key or array of primary keys
 	 *              which is used to create the DELETE statement
 	 * @param      PropelPDO $con the connection to use
 	 * @return     int 	The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -625,27 +617,27 @@ abstract class BaseCompaniesPeer {
 	 public static function doDelete($values, PropelPDO $con = null)
 	 {
 		if ($con === null) {
-			$con = Propel::getConnection(CompaniesPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(CustomersPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			// invalidate the cache for all objects of this type, since we have no
 			// way of knowing (without running a query) what objects should be invalidated
 			// from the cache based on this Criteria.
-			CompaniesPeer::clearInstancePool();
+			CustomersPeer::clearInstancePool();
 			// rename for clarity
 			$criteria = clone $values;
-		} elseif ($values instanceof Companies) { // it's a model object
+		} elseif ($values instanceof Customers) { // it's a model object
 			// invalidate the cache for this single object
-			CompaniesPeer::removeInstanceFromPool($values);
+			CustomersPeer::removeInstanceFromPool($values);
 			// create criteria based on pk values
 			$criteria = $values->buildPkeyCriteria();
 		} else { // it's a primary key, or an array of pks
 			$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(CompaniesPeer::COMPANY_ID, (array) $values, Criteria::IN);
+			$criteria->add(CustomersPeer::CUSTOMER_ID, (array) $values, Criteria::IN);
 			// invalidate the cache for this object(s)
 			foreach ((array) $values as $singleval) {
-				CompaniesPeer::removeInstanceFromPool($singleval);
+				CustomersPeer::removeInstanceFromPool($singleval);
 			}
 		}
 
@@ -660,7 +652,7 @@ abstract class BaseCompaniesPeer {
 			$con->beginTransaction();
 			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
-			CompaniesPeer::clearRelatedInstancePool();
+			CustomersPeer::clearRelatedInstancePool();
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -670,24 +662,24 @@ abstract class BaseCompaniesPeer {
 	}
 
 	/**
-	 * Validates all modified columns of given Companies object.
+	 * Validates all modified columns of given Customers object.
 	 * If parameter $columns is either a single column name or an array of column names
 	 * than only those columns are validated.
 	 *
 	 * NOTICE: This does not apply to primary or foreign keys for now.
 	 *
-	 * @param      Companies $obj The object to validate.
+	 * @param      Customers $obj The object to validate.
 	 * @param      mixed $cols Column name or array of column names.
 	 *
 	 * @return     mixed TRUE if all columns are valid or the error message of the first invalid column.
 	 */
-	public static function doValidate(Companies $obj, $cols = null)
+	public static function doValidate(Customers $obj, $cols = null)
 	{
 		$columns = array();
 
 		if ($cols) {
-			$dbMap = Propel::getDatabaseMap(CompaniesPeer::DATABASE_NAME);
-			$tableMap = $dbMap->getTable(CompaniesPeer::TABLE_NAME);
+			$dbMap = Propel::getDatabaseMap(CustomersPeer::DATABASE_NAME);
+			$tableMap = $dbMap->getTable(CustomersPeer::TABLE_NAME);
 
 			if (! is_array($cols)) {
 				$cols = array($cols);
@@ -703,7 +695,7 @@ abstract class BaseCompaniesPeer {
 
 		}
 
-		return BasePeer::doValidate(CompaniesPeer::DATABASE_NAME, CompaniesPeer::TABLE_NAME, $columns);
+		return BasePeer::doValidate(CustomersPeer::DATABASE_NAME, CustomersPeer::TABLE_NAME, $columns);
 	}
 
 	/**
@@ -711,23 +703,23 @@ abstract class BaseCompaniesPeer {
 	 *
 	 * @param      int $pk the primary key.
 	 * @param      PropelPDO $con the connection to use
-	 * @return     Companies
+	 * @return     Customers
 	 */
 	public static function retrieveByPK($pk, PropelPDO $con = null)
 	{
 
-		if (null !== ($obj = CompaniesPeer::getInstanceFromPool((string) $pk))) {
+		if (null !== ($obj = CustomersPeer::getInstanceFromPool((string) $pk))) {
 			return $obj;
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(CompaniesPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(CustomersPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria = new Criteria(CompaniesPeer::DATABASE_NAME);
-		$criteria->add(CompaniesPeer::COMPANY_ID, $pk);
+		$criteria = new Criteria(CustomersPeer::DATABASE_NAME);
+		$criteria->add(CustomersPeer::CUSTOMER_ID, $pk);
 
-		$v = CompaniesPeer::doSelect($criteria, $con);
+		$v = CustomersPeer::doSelect($criteria, $con);
 
 		return !empty($v) > 0 ? $v[0] : null;
 	}
@@ -743,16 +735,16 @@ abstract class BaseCompaniesPeer {
 	public static function retrieveByPKs($pks, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(CompaniesPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(CustomersPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		$objs = null;
 		if (empty($pks)) {
 			$objs = array();
 		} else {
-			$criteria = new Criteria(CompaniesPeer::DATABASE_NAME);
-			$criteria->add(CompaniesPeer::COMPANY_ID, $pks, Criteria::IN);
-			$objs = CompaniesPeer::doSelect($criteria, $con);
+			$criteria = new Criteria(CustomersPeer::DATABASE_NAME);
+			$criteria->add(CustomersPeer::CUSTOMER_ID, $pks, Criteria::IN);
+			$objs = CustomersPeer::doSelect($criteria, $con);
 		}
 		return $objs;
 	}
@@ -766,7 +758,7 @@ abstract class BaseCompaniesPeer {
 	 */
 	static public function getUniqueColumnNames()
 	{
-	  return array(array('company_name'));
+	  return array(array('customer_name'));
 	}
 
 	// symfony_behaviors behavior
@@ -784,15 +776,15 @@ abstract class BaseCompaniesPeer {
 	{
 	  if (preg_match('/^do(Select|Count)(Join(All(Except)?)?|Stmt)?/', $method, $match))
 	  {
-	    return sprintf('BaseCompaniesPeer:%s:%1$s', 'Count' == $match[1] ? 'doCount' : $match[0]);
+	    return sprintf('BaseCustomersPeer:%s:%1$s', 'Count' == $match[1] ? 'doCount' : $match[0]);
 	  }
 	
 	  throw new LogicException(sprintf('Unrecognized function "%s"', $method));
 	}
 
-} // BaseCompaniesPeer
+} // BaseCustomersPeer
 
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-BaseCompaniesPeer::buildTableMap();
+BaseCustomersPeer::buildTableMap();
 
